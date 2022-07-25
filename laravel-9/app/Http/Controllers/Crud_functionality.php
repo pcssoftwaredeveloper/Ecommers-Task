@@ -38,6 +38,7 @@ class Crud_functionality extends Controller
             $data = TotalGetProduct::find($request->id);
             $data->name = $request->name;
             $data->quantity = $request->qty;
+            $data->price = $request->price;
             $data->image = $img_name;
             $data->description = $request->description;
             $data->status = $request->status;
@@ -57,6 +58,7 @@ class Crud_functionality extends Controller
             $image->storeAs('public/images',$img_name);
             $table->name = $request->name;
             $table->quantity = $request->qty;
+            $data->price = $request->price;
             $table->image = $img_name;
             $table->description = $request->description;
             $table->status = $request->status;
