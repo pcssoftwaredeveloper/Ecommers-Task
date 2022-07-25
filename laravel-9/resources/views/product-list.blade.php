@@ -1,84 +1,5 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="{{ 'css/adminlte.min.css'; }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="content-wrapperr" style="min-height: 233px;">
-  <div class="content-header">
-      <div class="container">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Product</h1>
-          </div><!-- /.col -->          
-          <!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-<section class="content">
-      <div class="container">
-        <!-- You can create form here -->
-      </div>
-        <div class="row container">
-          <div class="col-md-12">
-            <div class="card"> 
-              <div class="card-header">
-              <h3 class="card-title">View Products</h3>
-              <div class="float-right"><input type="text" name="search" id="search_input" placeholder="Search..." class="form-control"></div>
-              <div class="float-right"><a href="{{ url('/') }}" class="button7">Add Product</a></div>
-              </div>
-              <form>
-                <div class="card-body">
-                  <table class="table table-hover table-bordered text-center">
-                    <thead class="thead-dark">
-                      <tr>                        
-                        <th scope="col">Sr.no</th>
-                        <th scope="col">Product name</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Description</th>
-                        <th scope="col" colspan="2">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody id="myTable">
-                      <?php $sr =1; ?>
-                       @foreach ($products as $product)
-                       
-                      <tr class="ser">
-                        <td>{{ $sr++; }}</td>
-                        <td>{{ $product->name }}</td>
-                        <td>{{ $product->quantity }}</td>
-                        <td>76</td>
-                        <td><img src="{{ asset('storage/images/'.$product->image) }}" width="100" height="100"></td>
-                        <td>{{ $product->status==1?'Published':'Draft' }}</td>
-                        <td>{{ $product->description }}</td>
-                        <td><a href="{{ 'update/'.$product->id }}"><i class="fa fa-edit" style="font-size:18px; color:green"></i></a></a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="{{ 'delete/'.$product->id }}" onclick="return confirm('Are sure delete product')"><i class="fa fa-trash" style="font-size:18px; color:red"></i></a> </td>
-                      </tr>                 
-                       @endforeach
-                                                     
-                    </tbody>
-                    <tfoot class="thead-dark">
-                      <tr>
-                        <th scope="col">Sr.no</th>
-                        <th scope="col">Product name</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Price</th>
-                         <th scope="col">Image</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Description</th>
-                        <th scope="col" colspan="2">Action</th>
-                      </tr>
-                    </tfoot>
-                  </table>
-                </div> 
-                <div class="card-footer">
-                  <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+<style type="text/css">
+  
 <style type="text/css">
   .content-header {
     padding: 15px 0.5rem;
@@ -144,10 +65,96 @@
     margin-left: 181px;
 }
 </style>
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{{ 'css/adminlte.min.css'; }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="content-wrapperr" style="min-height: 233px;">
+  <div class="content-header">
+      <div class="container">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Product</h1>
+          </div><!-- /.col -->          
+          <!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+<section class="content">
+      <div class="container">
+        <!-- You can create form here -->
+      </div>
+        <div class="row container">
+          <div class="col-md-12">
+            <div class="card"> 
+              <div class="card-header">
+              <h3 class="card-title">View Products</h3>
+              <!-- <div class="float-right search"><input type="submit" name="submit" id="search" class="button7" value="Search"></div> -->
+              <!-- <div class="float-right"><input type="text" name="search" id="search_input" placeholder="Search..." class="form-control"></div> -->
+
+              <div class="float-right"><a href="{{ url('/') }}" class="button7">Add Product</a></div>
+              </div>
+              <form>
+                <div class="card-body">
+                  <table class="table table-hover table-bordered text-center">
+                    <thead class="thead-dark">
+                      <tr>                        
+                        <th scope="col">Sr.no</th>
+                        <th scope="col">Product name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Description</th>
+                        <th scope="col" colspan="2">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="myTable">
+                      <?php $sr =1; ?>
+                       @foreach ($products as $product)
+                       
+                      <tr class="ser">
+                        <td>{{ $sr++; }}</td>
+                        <td>{{ $product->name }}</td>
+                        <td>{{ $product->quantity }}</td>
+                        <td>{{ $product->price }}</td>
+                        <td><img src="{{ asset('storage/images/'.$product->image) }}" width="100" height="100"></td>
+                        <td style="color: {{$product->status==1?'green':'red'}}">{{ $product->status==1?'Published':'Draft' }}</td>
+                        <td>{{ $product->description }}</td>
+                        <td><a href="{{ 'update/'.$product->id }}"><i class="fa fa-edit" style="font-size:18px; color:green"></i></a></a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="{{ 'delete/'.$product->id }}" onclick="return confirm('Are sure delete product')"><i class="fa fa-trash" style="font-size:18px; color:red"></i></a> </td>
+                      </tr>                 
+                       @endforeach
+                                                     
+                    </tbody>
+                    <tfoot class="thead-dark">
+                      <tr>
+                        <th scope="col">Sr.no</th>
+                        <th scope="col">Product name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                         <th scope="col">Image</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Description</th>
+                        <th scope="col" colspan="2">Action</th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div> 
+                <div class="card-footer">
+                  <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
+    
    $(document).ready(function(){
-  $("#search_input").on("keyup", function() {
+    $("#search_input").on("keyup", function() {
+    console.log('search');
     var value = $(this).val().toLowerCase();
     $("#myTable tr:not('.no-records')").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
